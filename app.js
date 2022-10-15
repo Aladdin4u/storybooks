@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
 
 
@@ -62,7 +62,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: MongoStore.create({ mongoUrl:process.env.MONGO_URL })
 }))
 
 // Passport middleware
