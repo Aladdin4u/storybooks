@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const StoryUserSchema = new mongoose.Schema({
+const StorySchema = new mongoose.Schema({
     title: {
         type: String,
         require: true,
@@ -17,7 +17,7 @@ const StoryUserSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: User
+        ref: 'User'
     },
     createdAt: {
         type: Date,

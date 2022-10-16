@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const exphbs = require('express-handlebars')
 const connectDB = require('./config/db')
 
 
@@ -27,7 +28,8 @@ if(process.env.NODE_ENV === 'development') {
 // ejs Helpers
 const { formatDate, stripTags, truncat, editIcon, select } = require('./helpers/hbs')
 
-app.engine('.hbs', expbs({
+// handlebars
+app.engine('.hbs', exphbs.engine({
     helpers: { 
         formatDate, 
         stripTags, 
